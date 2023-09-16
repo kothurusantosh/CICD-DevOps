@@ -1,0 +1,37 @@
+- name: My Playbook
+  hosts: "{{ servers }}"
+
+  vars:
+    user: kul
+
+  tasks:
+    - name: Print-1
+      debug:
+        msg: Hi from Ansible
+    - name: Print-2
+      debug:
+        msg: Hi from {{ user }}
+    - name: Print-3 With Condition
+      debug:
+        msg: Executing it as condition is met.
+      when: user == "Kishore"
+    - name: Print-4 with TAG
+      debug:
+        msg: Executing as my tag is defined   
+      tags:
+        - execute_only
+    - name: Task that will fail
+      command: ls -ltr /home/{{ user }}       
+      ignore_errors: yes
+    - name: Run Task after failure
+      debug:
+        msg: Previous Task got failed
+    - name: Install Maven
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - maven
+        - default-jdk
+      tags:
+        - package
