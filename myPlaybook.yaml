@@ -35,3 +35,6 @@
         - default-jdk
       tags:
         - package
+    - name: Print-5 Poll SCM Trigger
+      debug:
+        msg: Hi with POLL SCM Trigger
