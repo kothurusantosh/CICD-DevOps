@@ -38,3 +38,7 @@
     - name: Print-5 Poll SCM Trigger
       debug:
         msg: Hi with POLL SCM Trigger
+    - name: Print-6 GITHUB WEBHOOK Trigger
+      debug:
+        msg: Hi with GITHUB WEBHOOK Trigger
+        
